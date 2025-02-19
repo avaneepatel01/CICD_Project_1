@@ -67,6 +67,12 @@ pipeline {
                     # Make the required changes and commit
                     git checkout main
                     sed -i -E "s/(avaneep01\\/ultimate-cicd:)[^ ]*/\\1${BUILD_NUMBER}/" deployment.yml
+
+                    if git diff --quiet; then
+                        echo "No changes detected. Skipping commit."
+                        exit 0
+                    fi
+
                     git add deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
