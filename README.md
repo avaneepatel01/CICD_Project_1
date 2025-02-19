@@ -1,2 +1,1 @@
-# END TO END CICD IMPLEMENTATION OF SPRING BOOT APPLICATION ON AWS
-
+# End-to-end CI/CD implementation of a Spring Boot application on AWS.
